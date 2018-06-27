@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Post from "../../../components/Post/Post";
-
 import axios from "../../../axios";
+
+import Post from "../../../components/Post/Post";
 import './Posts.css';
 
 class Posts extends Component {
@@ -20,9 +20,9 @@ class Posts extends Component {
                     }
                 });
                 this.setState({posts: updatedPosts});
-                console.log(response);
+                // console.log(response);
             }).catch(error => {
-                console.log(error);
+            console.log(error);
             // this.setState({error: true})
         });
     }
@@ -33,12 +33,12 @@ class Posts extends Component {
 
     render() {
         let posts = <p style={{textAlign: 'center'}}>Something went wrong</p>;
-        if(!this.state.error){
+        if (!this.state.error) {
             posts = this.state.posts.map(post => {
-                return  <Post title={post.title}
-                              key={post.id}
-                              author={post.author}
-                              clicked={() => this.postSelectedHandler(post.id)}/>;
+                return <Post title={post.title}
+                             key={post.id}
+                             author={post.author}
+                             clicked={() => this.postSelectedHandler(post.id)}/>;
             });
         }
 
